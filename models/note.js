@@ -11,6 +11,11 @@ const NoteSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      validate: function (value) {
+        if (value.length > 30) {
+          throw new Error('Max title char is 30.');
+        }
+      },
     },
     content: {
       type: String,
